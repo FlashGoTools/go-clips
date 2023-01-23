@@ -1,7 +1,9 @@
 package goclips
 
+// Interface for movieclips
 type MovieClipIface interface {
 	CreateEmptyMovieClip()
+	GetChild()
 }
 
 type MovieClip struct {
@@ -14,4 +16,8 @@ type MovieClip struct {
 func (this MovieClip) CreateEmptyMovieClip(instanceName string, depth int) *any {
 	this.Children = append(this.Children, MovieClip{[]any{}})
 	return &this.Children[len(this.Children)-1]
+}
+
+func (this MovieClip) GetChild(childIndex int) *any {
+	return &this.Children[childIndex]
 }
