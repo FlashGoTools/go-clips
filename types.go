@@ -6,6 +6,7 @@ type MovieClipIface interface {
 	GetChild()
 }
 
+// MovieClip struct, do not create this yourself, instead use goclips.Root.CreateEmptyMovieClip
 type MovieClip struct {
 	Children []any
 }
@@ -18,6 +19,7 @@ func (this MovieClip) CreateEmptyMovieClip(instanceName string, depth int) *any 
 	return &this.Children[len(this.Children)-1]
 }
 
+// Gets a child clip
 func (this MovieClip) GetChild(childIndex int) *any {
 	return &this.Children[childIndex]
 }
