@@ -4,6 +4,7 @@ package goclips
 type MovieClipIface interface {
 	CreateEmptyMovieClip()
 	GetChild()
+	NextFrame()
 }
 
 // MovieClip struct, do not create this yourself, instead use goclips.Root.CreateEmptyMovieClip
