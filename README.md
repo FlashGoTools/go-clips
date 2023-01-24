@@ -1,2 +1,47 @@
 # go-clips
 Implementation of the entire MovieClip API in Go
+
+## Method Implementation Status
+- [ ] `attachAudio`
+- [ ] `attachBitmap`
+- [ ] `attachMovie`
+- [ ] `beginBitmapFill`
+- [ ] `beginFill`
+- [ ] `beginGradientFill`
+- [ ] `clear`
+- [x] `createEmptyMovieClip`
+- [ ] `createTextField`
+- [ ] `curveTo`
+- [ ] `duplicateMovieClip`
+- [ ] `endFill`
+- [ ] `getBounds`
+- [ ] `getBytesLoaded`
+- [ ] `getBytesTotal`
+- [ ] `getDepth`
+- [ ] `getInstanceAtDepth`
+- [ ] `getNextHighestDepth`
+- [ ] `getRect`
+- [ ] `getSWFVersion`
+- [ ] `getTextSnapshot`
+- [ ] ~~`getURL`~~ Won't Implement
+- [ ] `globalToLocal`
+- [ ] `gotoAndPlay`
+- [ ] `gotoAndStop`
+- [ ] `hitTest`
+- [ ] `lineGradientStyle`
+- [ ] `lineStyle`
+- [ ] `lineTo`
+- [ ] `loadMovie` SWF won't be supported
+- [ ] `loadVariables`
+- [ ] `localToGlobal`
+- [ ] `moveTo`
+- [ ] `nextFrame`
+- [ ] `play`
+- [ ] `prevFrame`
+- [ ] `removeMovieClip`
+- [ ] `setMask`
+- [ ] `startDrag`
+- [ ] `stop`
+- [ ] `stopDrag`
+- [ ] `swapDepths`
+- [ ] ~~`unloadMovie`~~ Maybe won't be implemented
