@@ -11,15 +11,17 @@ import (
 var Root = MovieClip{
 	Children: []MovieClip{},
 }
+var DidErorr = false
 
 // Initialize goclips, note that only onFrame gets executed after this function is called
-func InitClips(onFrame func(w screen.Window, e any)) {
+func InitClips(onFrame func(w screen.Window, e any) int) bool {
 	driver.Main(func(s screen.Screen) {
 		w, err := s.NewWindow(&screen.NewWindowOptions{
 			Title: "GoClips",
 		})
 		if err != nil {
 			logrus.Fatal("GoClips encountered an error!", err)
+			DidErorr = false
 			return
 		}
 		defer w.Release()
@@ -30,8 +32,14 @@ func InitClips(onFrame func(w screen.Window, e any)) {
 				if e.To == lifecycle.StageDead {
 					return
 				}
-				onFrame(w, e)
+
+			}
+			response := onFrame(w, e)
+			if response == -1 {
+				return // -1 = kill
 			}
 		}
+
 	})
+	return DidErorr
 }
