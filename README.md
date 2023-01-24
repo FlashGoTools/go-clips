@@ -4,7 +4,7 @@ Implementation of the entire MovieClip API in Go
 ## Method Implementation Status
 - [ ] `attachAudio`
 - [ ] `attachBitmap`
-- [ ] `attachMovie`
+- [ ] `attachMovie` (stub implemented)
 - [ ] `beginBitmapFill`
 - [ ] `beginFill`
 - [ ] `beginGradientFill`
