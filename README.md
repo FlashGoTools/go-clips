@@ -35,7 +35,7 @@ Implementation of the entire MovieClip API in Go
 - [ ] `loadVariables`
 - [ ] `localToGlobal`
 - [ ] `moveTo`
-- [ ] `nextFrame`
+- [x] `nextFrame` partial
 - [ ] `play`
 - [ ] `prevFrame`
 - [ ] `removeMovieClip`
