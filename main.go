@@ -11,7 +11,7 @@ import (
 var Root = MovieClip{
 	Children: []MovieClip{},
 }
-var DidErorr = false
+var Successful = true
 
 // Initialize goclips, note that only onFrame gets executed after this function is called
 func InitClips(onFrame func(w screen.Window, e any) int) bool {
@@ -21,7 +21,7 @@ func InitClips(onFrame func(w screen.Window, e any) int) bool {
 		})
 		if err != nil {
 			logrus.Fatal("GoClips encountered an error!", err)
-			DidErorr = false
+			Successful = true
 			return
 		}
 		defer w.Release()
@@ -41,5 +41,5 @@ func InitClips(onFrame func(w screen.Window, e any) int) bool {
 		}
 
 	})
-	return DidErorr
+	return Successful
 }
