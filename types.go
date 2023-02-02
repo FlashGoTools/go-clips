@@ -20,6 +20,7 @@ const (
 	OnRollOverID
 	OnSetFocusID
 	OnUnloadID
+	OnReleaseOutsideID
 )
 
 // Interface for movieclips
@@ -86,6 +87,26 @@ func (this MovieClip) PassEventCallToChildren(event EventID, data any) (bool, bo
 			child.Events.OnKillFocus(data)
 		case OnLoadID:
 			child.Events.OnLoad()
+		case OnMouseDownID:
+			child.Events.OnMouseDown()
+		case OnMouseMoveID:
+			child.Events.OnMouseMove()
+		case OnMouseUpID:
+			child.Events.OnMouseUp()
+		case OnPressID:
+			child.Events.OnPress()
+		case OnReleaseID:
+			child.Events.OnRelease()
+		case OnReleaseOutsideID:
+			child.Events.OnReleaseOutside()
+		case OnRollOutID:
+			child.Events.OnRollOut()
+		case OnRollOverID:
+			child.Events.OnRollOver()
+		case OnSetFocusID:
+			child.Events.OnSetFocus()
+		case OnUnloadID:
+			child.Events.OnUnload()
 		}
 	}
 	return didError, doExit
