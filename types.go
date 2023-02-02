@@ -1,15 +1,39 @@
 package goclips
 
+type EventID int
+
+const (
+	OnDataID EventID = iota
+	OnDragOutID
+	OnDragOverID
+	OnEnterFrameID
+	OnKeyDownID
+	OnKeyUpID
+	OnKillFocusID
+	OnLoadID
+	OnMouseDownID
+	OnMouseMoveID
+	OnMouseUpID
+	OnPressID
+	OnReleaseID
+	OnRollOutID
+	OnRollOverID
+	OnSetFocusID
+	OnUnloadID
+)
+
 // Interface for movieclips
 type MovieClipIface interface {
 	CreateEmptyMovieClip()
 	GetChild()
 	NextFrame()
+	PassEventCallToChildren()
 }
 
-// MovieClip struct, do not create this yourself, instead use goclips.Root.CreateEmptyMovieClip
+// MovieClip struct, do not create this yourself, instead use (MovieClip).CreateEmptyMovieClip
 type MovieClip struct {
 	Children     []MovieClip
+	Events       ClipFuncs
 	InstanceName string
 	Depth        int
 	currentFrame int
@@ -39,4 +63,30 @@ func (this MovieClip) NextFrame() {
 
 func (this MovieClip) AttachMovie(id string, name string, depth int) *MovieClip {
 	return &MovieClip{}
+}
+
+func (this MovieClip) PassEventCallToChildren(event EventID, data any) (bool, bool) {
+	var didError = false
+	var doExit = false
+	for _, child := range this.Children {
+		switch event {
+		case OnDataID:
+			child.Events.OnData()
+		case OnDragOutID:
+			child.Events.OnDragOut()
+		case OnDragOverID:
+			child.Events.OnDragOver()
+		case OnEnterFrameID:
+			didError, doExit = child.Events.OnEnterFrame()
+		case OnKeyDownID:
+			child.Events.OnKeyDown()
+		case OnKeyUpID:
+			child.Events.OnKeyUp()
+		case OnKillFocusID:
+			child.Events.OnKillFocus(data)
+		case OnLoadID:
+			child.Events.OnLoad()
+		}
+	}
+	return didError, doExit
 }
